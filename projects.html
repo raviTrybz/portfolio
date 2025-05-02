@@ -46,6 +46,76 @@
       <li>Regression and SIT for onboarding and identity checks</li>
       <li>Manual test execution for web/mobile + document API integration</li>
     </ul>
+
+    <button class="python-btn" onclick="document.getElementById('pythonModal').style.display='block'">
+      View Python Automation Skills
+    </button>
+
+    <div id="pythonModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="document.getElementById('pythonModal').style.display='none'">&times;</span>
+        <h2>Python Automation & Scripting</h2>
+        <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
+
+        <p>I have leveraged Python scripting extensively to automate testing tasks, ensuring efficiency and accuracy.</p>
+
+        <ul>
+          <li><strong>Automation Tools:</strong> Playwright, Selenium WebDriver</li>
+          <li><strong>API Testing:</strong> Python Requests, Postman integration</li>
+          <li><strong>Data Handling:</strong> CSV processing using pandas</li>
+          <li><strong>CI/CD Integration:</strong> Automated scripts executed via GitHub Actions</li>
+          <li><strong>Database Queries:</strong> Basic CRUD operations using SQL and Python</li>
+        </ul>
+
+        <p>This login script is part of my QA automation effort using Python + Playwright for real-world regression testing.</p>
+
+        <h3>Example Automation Script (Playwright)</h3>
+        <pre>
+from playwright.sync_api import sync_playwright
+from dotenv import load_dotenv
+import os
+import logging
+from config import LOGIN_URL, MEMBER_URL, SELECTORS
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
+# Load environment variables
+load_dotenv()
+
+def login(page):
+    email = os.getenv("LOGIN_EMAIL")
+    password = os.getenv("LOGIN_PASSWORD")
+    if not email or not password:
+        raise ValueError("Email or Password not set in environment variables")
+
+    page.goto(LOGIN_URL)
+    page.fill(SELECTORS["login_email"], email)
+    page.fill(SELECTORS["login_password"], password)
+    page.click(SELECTORS["login_submit"])
+    page.wait_for_url(MEMBER_URL)
+    page.screenshot(path="tests/screenshots/login_success.png")
+    logging.info("Login successful: %s", page.url)
+
+def test_login():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        try:
+            page = browser.new_page()
+            login(page)
+        except Exception as e:
+            logging.error("Login test failed", exc_info=True)
+        finally:
+            browser.close()
+
+if __name__ == "__main__":
+    test_login()
+        </pre>
+      </div>
+    </div>
   </section>
 </main>
 
