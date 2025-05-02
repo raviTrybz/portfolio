@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Projects</title>
@@ -51,15 +51,12 @@
   </section>
 </main>
 
-<!-- Modal content placed outside <main> -->
+<!-- Modal outside of <main> -->
 <div id="pythonModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
-    <h2>Python Automation &amp; Scripting</h2>
+    <h2>Python Automation & Scripting</h2>
     <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
-
-    <p>I have leveraged Python scripting extensively to automate testing tasks, ensuring efficiency and accuracy.</p>
-
     <ul>
       <li><strong>Automation Tools:</strong> Playwright, Selenium WebDriver</li>
       <li><strong>API Testing:</strong> Python Requests, Postman integration</li>
@@ -67,11 +64,10 @@
       <li><strong>CI/CD Integration:</strong> Automated scripts executed via GitHub Actions</li>
       <li><strong>Database Queries:</strong> Basic CRUD operations using SQL and Python</li>
     </ul>
-
     <p>This login script is part of my QA automation effort using Python + Playwright for real-world regression testing.</p>
 
     <h3>Example Automation Script (Playwright)</h3>
-    <pre>
+    <pre><code>
 from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
 import os
@@ -114,7 +110,7 @@ def test_login():
 
 if __name__ == "__main__":
     test_login()
-    </pre>
+    </code></pre>
   </div>
 </div>
 
