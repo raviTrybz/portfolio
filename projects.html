@@ -51,66 +51,23 @@
   </section>
 </main>
 
-<!-- Modal outside main for safety -->
+<!-- Modal -->
 <div id="pythonModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
-    <h2>Python Automation & Scripting</h2>
+    <h2>Python Automation &amp; Scripting</h2>
     <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
-
     <ul>
-      <li><strong>Automation Tools:</strong> Playwright, Selenium WebDriver</li>
-      <li><strong>API Testing:</strong> Python Requests, Postman integration</li>
-      <li><strong>Data Handling:</strong> CSV processing using pandas</li>
-      <li><strong>CI/CD Integration:</strong> Automated scripts via GitHub Actions</li>
-      <li><strong>Database Queries:</strong> Basic CRUD operations using SQL and Python</li>
+      <li><strong>Tools:</strong> Playwright, Selenium, Postman</li>
+      <li><strong>Data:</strong> CSV handling via pandas</li>
+      <li><strong>CI/CD:</strong> GitHub Actions</li>
     </ul>
-
-    <p>This login script is part of my QA automation effort using Python + Playwright for real-world regression testing.</p>
-
-    <h3>Example Automation Script (Playwright)</h3>
-    <pre><code>from playwright.sync_api import sync_playwright
-from dotenv import load_dotenv
-import os
-import logging
-from config import LOGIN_URL, MEMBER_URL, SELECTORS
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S"
-)
-
-# Load environment variables
-load_dotenv()
-
-def login(page):
-    email = os.getenv("LOGIN_EMAIL")
-    password = os.getenv("LOGIN_PASSWORD")
-    if not email or not password:
-        raise ValueError("Email or Password not set")
-
-    page.goto(LOGIN_URL)
-    page.fill(SELECTORS["login_email"], email)
-    page.fill(SELECTORS["login_password"], password)
-    page.click(SELECTORS["login_submit"])
-    page.wait_for_url(MEMBER_URL)
-    page.screenshot(path="tests/screenshots/login_success.png")
-    logging.info("Login successful: %s", page.url)
-
-def test_login():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        try:
-            page = browser.new_page()
-            login(page)
-        except Exception as e:
-            logging.error("Login test failed", exc_info=True)
-        finally:
-            browser.close()
-
-if __name__ == "__main__":
-    test_login()</code></pre>
+    <h3>Login Script Snippet</h3>
+    <pre><code>page.goto(LOGIN_URL)
+page.fill(SELECTORS["login_email"], email)
+page.fill(SELECTORS["login_password"], password)
+page.click(SELECTORS["login_submit"])
+page.wait_for_url(MEMBER_URL)</code></pre>
   </div>
 </div>
 
@@ -120,23 +77,23 @@ if __name__ == "__main__":
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('pythonModal');
-    const openBtn = document.getElementById('openModal');
-    const closeBtn = document.getElementById('closeModal');
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("pythonModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
 
-    if (modal && openBtn && closeBtn) {
-      openBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
+    if (openBtn && closeBtn && modal) {
+      openBtn.addEventListener("click", function () {
+        modal.style.display = "block";
       });
 
-      closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
       });
 
-      window.addEventListener('click', (event) => {
+      window.addEventListener("click", function (event) {
         if (event.target === modal) {
-          modal.style.display = 'none';
+          modal.style.display = "none";
         }
       });
     }
