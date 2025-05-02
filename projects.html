@@ -51,23 +51,24 @@
   </section>
 </main>
 
-<!-- Modal -->
+<!-- Modal outside main -->
 <div id="pythonModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
-    <h2>Python Automation &amp; Scripting</h2>
+    <h2>Python Automation & Scripting</h2>
     <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
     <ul>
-      <li><strong>Tools:</strong> Playwright, Selenium, Postman</li>
-      <li><strong>Data:</strong> CSV handling via pandas</li>
+      <li><strong>Tools:</strong> Playwright, Selenium, Postman, Pandas</li>
+      <li><strong>Database:</strong> SQL CRUD with TablePlus</li>
       <li><strong>CI/CD:</strong> GitHub Actions</li>
     </ul>
-    <h3>Login Script Snippet</h3>
+    <p>This script tests login automation using Playwright + Python.</p>
+    <h3>Sample Script Snippet</h3>
     <pre><code>page.goto(LOGIN_URL)
-page.fill(SELECTORS["login_email"], email)
-page.fill(SELECTORS["login_password"], password)
-page.click(SELECTORS["login_submit"])
-page.wait_for_url(MEMBER_URL)</code></pre>
+page.fill(SELECTORS["email"], email)
+page.fill(SELECTORS["password"], password)
+page.click(SELECTORS["submit"])</code></pre>
+    <p><a href="files/playwright-login.txt" target="_blank">Download full script &rarr;</a></p>
   </div>
 </div>
 
