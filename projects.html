@@ -51,24 +51,25 @@
   </section>
 </main>
 
-<!-- Modal outside of <main> -->
+<!-- Modal outside main for safety -->
 <div id="pythonModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
     <h2>Python Automation & Scripting</h2>
     <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
+
     <ul>
       <li><strong>Automation Tools:</strong> Playwright, Selenium WebDriver</li>
       <li><strong>API Testing:</strong> Python Requests, Postman integration</li>
       <li><strong>Data Handling:</strong> CSV processing using pandas</li>
-      <li><strong>CI/CD Integration:</strong> Automated scripts executed via GitHub Actions</li>
+      <li><strong>CI/CD Integration:</strong> Automated scripts via GitHub Actions</li>
       <li><strong>Database Queries:</strong> Basic CRUD operations using SQL and Python</li>
     </ul>
+
     <p>This login script is part of my QA automation effort using Python + Playwright for real-world regression testing.</p>
 
     <h3>Example Automation Script (Playwright)</h3>
-    <pre><code>
-from playwright.sync_api import sync_playwright
+    <pre><code>from playwright.sync_api import sync_playwright
 from dotenv import load_dotenv
 import os
 import logging
@@ -87,7 +88,7 @@ def login(page):
     email = os.getenv("LOGIN_EMAIL")
     password = os.getenv("LOGIN_PASSWORD")
     if not email or not password:
-        raise ValueError("Email or Password not set in environment variables")
+        raise ValueError("Email or Password not set")
 
     page.goto(LOGIN_URL)
     page.fill(SELECTORS["login_email"], email)
@@ -109,8 +110,7 @@ def test_login():
             browser.close()
 
 if __name__ == "__main__":
-    test_login()
-    </code></pre>
+    test_login()</code></pre>
   </div>
 </div>
 
@@ -121,23 +121,25 @@ if __name__ == "__main__":
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const openModal = document.getElementById('openModal');
-    const closeModal = document.getElementById('closeModal');
     const modal = document.getElementById('pythonModal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
 
-    openModal.addEventListener('click', () => {
-      modal.style.display = 'block';
-    });
+    if (modal && openBtn && closeBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+      });
 
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
+      closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
-      }
-    });
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
   });
 </script>
 
