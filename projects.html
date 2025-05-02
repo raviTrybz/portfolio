@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Projects</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='css/style.css'>
 </head>
 <body>
 
@@ -13,11 +13,11 @@
 
 <nav>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="experience.html">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href='index.html'>Home</a></li>
+    <li><a href='about.html'>About</a></li>
+    <li><a href='experience.html'>Experience</a></li>
+    <li><a href='projects.html'>Projects</a></li>
+    <li><a href='contact.html'>Contact</a></li>
   </ul>
 </nav>
 
@@ -57,18 +57,63 @@
     <span class="close" id="closeModal">&times;</span>
     <h2>Python Automation &amp; Scripting</h2>
     <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
+
+    <p>I have leveraged Python scripting extensively to automate testing tasks, ensuring efficiency and accuracy.</p>
+
     <ul>
-      <li><strong>Tools:</strong> Playwright, Selenium, Postman, Pandas</li>
-      <li><strong>Database:</strong> SQL CRUD with TablePlus</li>
-      <li><strong>CI/CD:</strong> GitHub Actions</li>
+      <li><strong>Automation Tools:</strong> Playwright, Selenium WebDriver</li>
+      <li><strong>API Testing:</strong> Python Requests, Postman integration</li>
+      <li><strong>Data Handling:</strong> CSV processing using pandas</li>
+      <li><strong>CI/CD Integration:</strong> Automated scripts executed via GitHub Actions</li>
+      <li><strong>Database Queries:</strong> Basic CRUD operations using SQL and Python</li>
     </ul>
-    <p>This script tests login automation using Playwright + Python.</p>
-    <h3>Sample Script Snippet</h3>
-    <pre><code>page.goto(LOGIN_URL)
-page.fill(SELECTORS["email"], email)
-page.fill(SELECTORS["password"], password)
-page.click(SELECTORS["submit"])</code></pre>
-    <p><a href="files/playwright-login.txt" target="_blank">Download full script &rarr;</a></p>
+
+    <p>This login script is part of my QA automation effort using Python + Playwright for real-world regression testing.</p>
+
+    <h3>Example Automation Script (Playwright)</h3>
+    <div class="code-block">
+from playwright.sync_api import sync_playwright
+from dotenv import load_dotenv
+import os
+import logging
+from config import LOGIN_URL, MEMBER_URL, SELECTORS
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+
+load_dotenv()
+
+def login(page):
+    email = os.getenv("LOGIN_EMAIL")
+    password = os.getenv("LOGIN_PASSWORD")
+    if not email or not password:
+        raise ValueError("Email or Password not set")
+
+    page.goto(LOGIN_URL)
+    page.fill(SELECTORS["login_email"], email)
+    page.fill(SELECTORS["login_password"], password)
+    page.click(SELECTORS["login_submit"])
+    page.wait_for_url(MEMBER_URL)
+    page.screenshot(path="tests/screenshots/login_success.png")
+    logging.info("Login successful: %s", page.url)
+
+def test_login():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        try:
+            page = browser.new_page()
+            login(page)
+        except Exception as e:
+            logging.error("Login test failed", exc_info=True)
+        finally:
+            browser.close()
+
+if __name__ == "__main__":
+    test_login()
+    </div>
   </div>
 </div>
 
@@ -77,13 +122,13 @@ page.click(SELECTORS["submit"])</code></pre>
   <p style="font-size:12px;color:#ccc;">Client names reflect QA contributions delivered via my employer (Wink/Trybz). No proprietary or confidential information is shared.</p>
 </footer>
 
-<script defer>
+<script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("pythonModal");
     const openBtn = document.getElementById("openModal");
     const closeBtn = document.getElementById("closeModal");
 
-    if (openBtn && closeBtn && modal) {
+    if (modal && openBtn && closeBtn) {
       openBtn.addEventListener("click", function () {
         modal.style.display = "block";
       });
