@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Projects</title>
-  <link rel='stylesheet' href='css/style.css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -13,11 +14,11 @@
 
 <nav>
   <ul>
-    <li><a href='index.html'>Home</a></li>
-    <li><a href='about.html'>About</a></li>
-    <li><a href='experience.html'>Experience</a></li>
-    <li><a href='projects.html'>Projects</a></li>
-    <li><a href='contact.html'>Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
@@ -27,24 +28,24 @@
 
     <h2>Cashback Rewards Platform (Sony, RACQ, IMAR)</h2>
     <ul>
-      <li>Automated "Shop Now" journeys, click tracking, credit assignment, and payout reconciliation</li>
-      <li>Used Playwright + Python for frontend automation</li>
-      <li>Handled file-based transaction validation using SFTP</li>
-      <li>Manually tracked payouts via Vapor dashboard</li>
+      <li><i data-lucide="play-circle"></i> Automated "Shop Now" journeys, click tracking, credit assignment, and payout reconciliation</li>
+      <li><i data-lucide="code"></i> Used Playwright + Python for frontend automation</li>
+      <li><i data-lucide="upload-cloud"></i> Handled file-based transaction validation using SFTP</li>
+      <li><i data-lucide="bug"></i> Manually tracked payouts via Vapor dashboard</li>
     </ul>
 
     <h2>Association Portals (AAPI, ANSWERS)</h2>
     <ul>
-      <li>Validated user registration, membership plans, approval workflows, admin publishing tools</li>
-      <li>SQL checks for joins, updates, and deletions using TablePlus</li>
-      <li>Created exploratory test cases during sprint retros</li>
-      <li>Tested bulk upload and export modules handling 1000+ records (CSV)</li>
+      <li><i data-lucide="user-check"></i> Validated user registration, membership plans, approval workflows, admin publishing tools</li>
+      <li><i data-lucide="database"></i> SQL checks for joins, updates, and deletions using TablePlus</li>
+      <li><i data-lucide="file-text"></i> Created exploratory test cases during sprint retros</li>
+      <li><i data-lucide="file-up"></i> Tested bulk upload and export modules handling 1000+ records (CSV)</li>
     </ul>
 
     <h2>Identity Verification System (Bank of Baroda)</h2>
     <ul>
-      <li>Regression and SIT for onboarding and identity checks</li>
-      <li>Manual test execution for web/mobile + document API integration</li>
+      <li><i data-lucide="shield-check"></i> Regression and SIT for onboarding and identity checks</li>
+      <li><i data-lucide="smartphone"></i> Manual test execution for web/mobile + document API integration</li>
     </ul>
 
     <button class="python-btn" id="openModal">View Python Automation Skills</button>
@@ -122,7 +123,7 @@ if __name__ == "__main__":
   <p style="font-size:12px;color:#ccc;">Client names reflect QA contributions delivered via my employer (Wink/Trybz). No proprietary or confidential information is shared.</p>
 </footer>
 
-<script type="text/javascript">
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("pythonModal");
     const openBtn = document.getElementById("openModal");
@@ -143,6 +144,8 @@ if __name__ == "__main__":
         }
       });
     }
+
+    lucide.createIcons();
   });
 </script>
 
