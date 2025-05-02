@@ -161,3 +161,61 @@ h1, h2, h3 {
   font-family: monospace;
   margin-top: 10px;
 }
+/* ---------------------------- */
+/* 📱 Responsive Styles: Mobile */
+/* ---------------------------- */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  header {
+    padding: 20px 10px;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  nav {
+    padding: 15px;
+  }
+
+  section {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .python-btn,
+  .button {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .code-block {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 12px;
+  }
+}
+
