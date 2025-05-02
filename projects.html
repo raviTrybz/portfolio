@@ -54,7 +54,7 @@
     <div id="pythonModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="document.getElementById('pythonModal').style.display='none'">&times;</span>
-        <h2>Python Automation & Scripting</h2>
+        <h2>Python Automation &amp; Scripting</h2>
         <p><strong>Proficiency Level:</strong> Basic to Intermediate</p>
 
         <p>I have leveraged Python scripting extensively to automate testing tasks, ensuring efficiency and accuracy.</p>
@@ -79,26 +79,26 @@ from config import LOGIN_URL, MEMBER_URL, SELECTORS
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S"
+    format=&quot;%(asctime)s [%(levelname)s] %(message)s&quot;,
+    datefmt=&quot;%Y-%m-%d %H:%M:%S&quot;
 )
 
 # Load environment variables
 load_dotenv()
 
 def login(page):
-    email = os.getenv("LOGIN_EMAIL")
-    password = os.getenv("LOGIN_PASSWORD")
+    email = os.getenv(&quot;LOGIN_EMAIL&quot;)
+    password = os.getenv(&quot;LOGIN_PASSWORD&quot;)
     if not email or not password:
-        raise ValueError("Email or Password not set in environment variables")
+        raise ValueError(&quot;Email or Password not set in environment variables&quot;)
 
     page.goto(LOGIN_URL)
-    page.fill(SELECTORS["login_email"], email)
-    page.fill(SELECTORS["login_password"], password)
-    page.click(SELECTORS["login_submit"])
+    page.fill(SELECTORS[&quot;login_email&quot;], email)
+    page.fill(SELECTORS[&quot;login_password&quot;], password)
+    page.click(SELECTORS[&quot;login_submit&quot;])
     page.wait_for_url(MEMBER_URL)
-    page.screenshot(path="tests/screenshots/login_success.png")
-    logging.info("Login successful: %s", page.url)
+    page.screenshot(path=&quot;tests/screenshots/login_success.png&quot;)
+    logging.info(&quot;Login successful: %s&quot;, page.url)
 
 def test_login():
     with sync_playwright() as p:
@@ -107,11 +107,11 @@ def test_login():
             page = browser.new_page()
             login(page)
         except Exception as e:
-            logging.error("Login test failed", exc_info=True)
+            logging.error(&quot;Login test failed&quot;, exc_info=True)
         finally:
             browser.close()
 
-if __name__ == "__main__":
+if __name__ == &quot;__main__&quot;:
     test_login()
         </pre>
       </div>
